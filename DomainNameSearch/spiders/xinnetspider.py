@@ -32,7 +32,8 @@ class XinNetSpider(Spider):
 
     def start_requests(self):
         search_url = 'http://checkdomain.xinnet.com/domainCheck?searchRandom=0'
-        prefixs = self.random_domain(2) # 随机生成字母数字组合的位数
+        prefixs = self.random_domain(2)  # 随机生成字母数字组合的位数
+        print len(prefixs)
         for prefix in prefixs:
             for suffix in self.suffixs:
                 item = DomainnamesearchItem()
@@ -55,7 +56,27 @@ class XinNetSpider(Spider):
             item['yes'] = False
         yield item
 
-    def random_domain(self, maxlength=1):
+    def random_domain(self, length=1):
+        '''
+        只是length长度的全排列
+        :param length: 指定长度
+        :return: domains
+        '''
+        domains = []
+        elements = string.ascii_lowercase + ''.join([str(i) for i in xrange(10)])
+        for j in itertools.permutations(elements, length):
+            domains.append(''.join(j))
+        if length != 1:
+            for k in elements:
+                domains.append(k * length)
+        return domains
+
+    def random_domain_all(self, maxlength=1):
+        '''
+        包括1-maxlenth所有位数的全排列
+        :param maxlength: 最大长度
+        :return: domains
+        '''
         domains = []
         elements = string.ascii_lowercase + ''.join([str(i) for i in xrange(10)])
         for i in xrange(maxlength):
