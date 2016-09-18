@@ -32,7 +32,7 @@ class XinNetSpider(Spider):
 
     def start_requests(self):
         search_url = 'http://checkdomain.xinnet.com/domainCheck?searchRandom=0'
-        prefixs = self.random_domain(2)
+        prefixs = self.random_domain(2) # 随机生成字母数字组合的位数
         for prefix in prefixs:
             for suffix in self.suffixs:
                 item = DomainnamesearchItem()
