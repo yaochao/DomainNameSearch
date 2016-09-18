@@ -8,7 +8,7 @@
 import scrapy
 
 
-class Domainnamesearch2Item(scrapy.Item):
+class DomainnamesearchItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass

@@ -6,6 +6,6 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 
-class Domainnamesearch2Pipeline(object):
+class DomainnamesearchPipeline(object):
     def process_item(self, item, spider):
         return item
