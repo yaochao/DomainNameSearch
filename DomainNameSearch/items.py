@@ -5,10 +5,15 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy import Item, Field
 
 
-class DomainnamesearchItem(scrapy.Item):
+class DomainnamesearchItem(Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    prefix = Field()
+    suffix = Field()
+    price = Field()
+    yes = Field()
+    url = Field()
+    _id = Field()
